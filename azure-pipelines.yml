@@ -17,7 +17,6 @@ steps:
 - script: python -m pip install Docker
 - script: python -m pip install requests
 - script: python -m pip install colorama
-- script: docker image list
 
 - task: Bash@3
   inputs:
@@ -30,6 +29,8 @@ steps:
     containerregistrytype: 'Container Registry'
     dockerRegistryConnection: 'Tenable_Conection'
     imageName: 'Prueba4:latest'
+
+- script: docker image list
 
 - task: Docker@0
   displayName: 'Publish image'
