@@ -16,6 +16,7 @@ steps:
 - script: python -m pip install python-dateutil
 - script: python -m pip install Docker
 - script: python -m pip install requests
+- script: python -m pip install colorama
 
 - task: Bash@3
   inputs:
