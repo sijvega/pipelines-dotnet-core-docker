@@ -30,3 +30,11 @@ steps:
     dockerRegistryConnection: 'Tenable_Conection'
     action: 'Push an image'
     imageName: 'Prueba4:latest'
+
+
+- task: DownloadBuildArtifacts@0
+  displayName: 'artifacts'
+  inputs:
+    buildType: 'current'
+    downloadType: 'specific'
+    downloadPath: '$(System.ArtifactsDirectory)'
