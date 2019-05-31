@@ -19,12 +19,7 @@ steps:
 - task: Bash@3
   inputs:
     targetType: 'inline'
-    script: 'python --version'
-
-- task: Bash@3
-  inputs:
-    targetType: 'inline'
-    script: 'wget -h'
+    script: 'wget https://raw.githubusercontent.com/tenable/csup/master/csup.py && python csup.py'
 
 - task: Docker@0
   displayName: 'Build image'
@@ -40,4 +35,3 @@ steps:
     dockerRegistryConnection: 'Tenable_Conection'
     action: 'Push an image'
     imageName: 'Prueba4:latest'
-
