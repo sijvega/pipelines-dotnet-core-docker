@@ -17,13 +17,6 @@ steps:
   displayName: 'dotnet build $(buildConfiguration)'
 
 - task: Docker@0
-  displayName: 'Build image'
-  inputs:
-    containerregistrytype: 'Container Registry'
-    dockerRegistryConnection: 'Tenable_Conection'
-    imageName: 'Prueba4:latest'
-
-- task: Docker@0
   displayName: 'Publish image'
   inputs:
     containerregistrytype: 'Container Registry'
@@ -31,10 +24,12 @@ steps:
     action: 'Push an image'
     imageName: 'Prueba4:latest'
 
-
-- task: DownloadBuildArtifacts@0
-  displayName: 'artifacts'
+- task: Bash@3
   inputs:
-    buildType: 'current'
-    downloadType: 'specific'
-    downloadPath: '$(System.ArtifactsDirectory)'
+    targetType: 'inline'
+    script: 'python --version'
+
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: 'wget -h'
