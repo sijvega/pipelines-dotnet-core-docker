@@ -17,9 +17,16 @@ steps:
   displayName: 'dotnet build $(buildConfiguration)'
 
 - task: Docker@0
+  displayName: 'Build image'
+  inputs:
+    containerregistrytype: 'Container Registry'
+    dockerRegistryConnection: 'Tenable2'
+    imageName: '$(DockerImageName):$(Build.BuildId)'
+
+- task: Docker@0
   displayName: 'Publish image'
   inputs:
     containerregistrytype: 'Container Registry'
-    dockerRegistryConnection: 'Tenable_Conection'
+    dockerRegistryConnection: 'Tenable2'
     action: 'Push an image'
     imageName: '$(DockerImageName):$(Build.BuildId)'
