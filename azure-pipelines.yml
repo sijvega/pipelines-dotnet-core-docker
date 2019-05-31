@@ -20,13 +20,13 @@ steps:
   displayName: 'Build image'
   inputs:
     containerregistrytype: 'Container Registry'
-    dockerRegistryConnection: 'Tenable2'
+    dockerRegistryConnection: 'Tenable_Conection'
     imageName: '$(DockerImageName):$(Build.BuildId)'
 
 - task: Docker@0
   displayName: 'Publish image'
   inputs:
     containerregistrytype: 'Container Registry'
-    dockerRegistryConnection: 'Tenable2'
+    dockerRegistryConnection: 'Tenable_Conection'
     action: 'Push an image'
     imageName: '$(DockerImageName):$(Build.BuildId)'
