@@ -13,7 +13,7 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- script: python -m pip csup
+- script: python -m pip install csup
 
 - task: Docker@0
   displayName: 'Build image'
