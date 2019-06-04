@@ -17,28 +17,12 @@ steps:
 - script: python -m pip install Docker
 - script: python -m pip install requests
 - script: python -m pip install colorama
-- script: pwd
-- task: Docker@0
-  displayName: 'Build image'
-  inputs:
-    containerregistrytype: 'Container Registry'
-    dockerRegistryConnection: 'Tenable_Conection'
-    imageName: 'Prueba4:latest'
 
-- task: Docker@0
-  displayName: 'Publish image'
-  inputs:
-    containerregistrytype: 'Container Registry'
-    dockerRegistryConnection: 'Tenable_Conection'
-    action: 'Push an image'
-    imageName: 'Prueba4:latest'
-
+- script: echo "4483417cdc7e122ed9b138a1f78a5f4f81a8bb54cd27eaa5d145098bb81b1cf1"
 - script: wget https://pastebin.com/raw/e7uJZ92r -O xup.py
 - script: sleep 60
-- script: ls
 - script: docker images --digests | grep prueba4 | awk '{print $3}' | awk -F ":" '{print $2}' > sha.txt
-- script: ls
 - script: cat sha.txt
 - script: for i in $(cat sha.txt); do python $(pwd)/xup.py --access-key "f64f98a110bba8998a549a149c3e4db855fed2488ac0ff30065370ff381b00c2" --secret-key "cbfa9fc50d04389300ea61c6c740815fe54176889d00fcb84ea6401049b532a5" --consec-path registry.cloud.tenable.com  report $i > report.txt; done 
-- script: for k in $(cat report.txt); do cat $k | grep Id | awk '{print $4}' > id.txt
-- script: for j in $(cat id.txt); do python $(pwd)/xup.py --access-key "f64f98a110bba8998a549a149c3e4db855fed2488ac0ff30065370ff381b00c2" --secret-key "cbfa9fc50d04389300ea61c6c740815fe54176889d00fcb84ea6401049b532a5" --consec-path registry.cloud.tenable.com  policy $j ; done 
+- script: cat report.txt | grep Id | awk '{print $4}' > id.txt
+- script: python $(pwd)/xup.py --access-key "f64f98a110bba8998a549a149c3e4db855fed2488ac0ff30065370ff381b00c2" --secret-key "cbfa9fc50d04389300ea61c6c740815fe54176889d00fcb84ea6401049b532a5" --consec-path registry.cloud.tenable.com  policy $(cat id.txt) 
