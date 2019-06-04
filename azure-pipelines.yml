@@ -13,12 +13,21 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- script: python -m pip install csup
 
 - task: Docker@0
   displayName: 'Build image'
   inputs:
     containerregistrytype: 'Container Registry'
     dockerRegistryConnection: 'Tenable_Conection'
+    imageName: 'Prueba4:latest'
+
+- task: Docker@0
+  displayName: 'Publish image'
+  inputs:
+    containerregistrytype: 'Container Registry'
+    dockerRegistryConnection: 'Tenable_Conection'
+    action: 'Push an image'
     imageName: 'Prueba4:latest'
 
 - script: docker images --digests
