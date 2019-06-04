@@ -13,8 +13,11 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- script: python -m pip install csup
-
+- script: python -m pip install python-dateutil
+- script: python -m pip install Docker
+- script: python -m pip install requests
+- script: python -m pip install colorama
+- script: pwd
 - task: Docker@0
   displayName: 'Build image'
   inputs:
@@ -31,4 +34,5 @@ steps:
     imageName: 'Prueba4:latest'
 
 - script: wget https://raw.githubusercontent.com/lobsanligo/test/master/csup.py 
+- script: ls
 - script: sha=$(docker images --digests | grep prueba4 | awk '{print $3}' | awk -F ":" '{print $2}') && python csup.py --access-key "f64f98a110bba8998a549a149c3e4db855fed2488ac0ff30065370ff381b00c2" --secret-key "cbfa9fc50d04389300ea61c6c740815fe54176889d00fcb84ea6401049b532a5" --consec-path registry.cloud.tenable.com  report $sha
