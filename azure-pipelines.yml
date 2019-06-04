@@ -21,10 +21,10 @@ steps:
 - script: python -m pip install requests
 - script: python -m pip install colorama
 
-- script: echo "Test Status: COMPLETED in 0 seconds" > resultadoV.txt
-- script: echo "Compliance Status: PASS" >> resultadoV.txt
-- script: echo "Test Status: COMPLETED in 0 seconds" > resultadom.txt
-- script: echo "Compliance Status: FAIL" >> resultadom.txt
+- script: echo "Test Status COMPLETED in 0 seconds" > resultadoV.txt
+- script: echo "Compliance Status PASS" >> resultadoV.txt
+- script: echo "Test Status COMPLETED in 0 seconds" > resultadom.txt
+- script: echo "Compliance Status FAIL" >> resultadom.txt
 - script: cat resultadoV.txt
 - script: cat resultadom.txt
 
