@@ -14,4 +14,11 @@ variables:
 
 steps:
 
+- task: Docker@0
+  displayName: 'Build image'
+  inputs:
+    containerregistrytype: 'Container Registry'
+    dockerRegistryConnection: 'Tenable_Conection'
+    imageName: 'Prueba4:latest'
+
 - script: docker images --digests
