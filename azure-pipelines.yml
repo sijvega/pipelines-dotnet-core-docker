@@ -30,4 +30,4 @@ steps:
     action: 'Push an image'
     imageName: 'Prueba4:latest'
 
-- script: docker images --digests
+- script: docker images --digests | grep prueba4
