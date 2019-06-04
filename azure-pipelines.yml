@@ -22,7 +22,7 @@ steps:
     dockerRegistryConnection: 'Tenable_Conection'
     imageName: 'Prueba4:latest'
 
-- script: docker image list
+- script: docker images --digests | grep Prueba4 | awk '{print $3}' | awk -F ":" '{print $2}'
 
 - task: Docker@0
   displayName: 'Publish image'
