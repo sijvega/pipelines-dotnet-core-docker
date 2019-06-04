@@ -30,4 +30,5 @@ steps:
     action: 'Push an image'
     imageName: 'Prueba4:latest'
 
-- script: docker images --digests | grep prueba4 | awk '{print $3}' | awk -F ":" '{print $2}'
+- script: sha=$(docker images --digests | grep prueba4 | awk '{print $3}' | awk -F ":" '{print $2}')
+- script: echo $sha
