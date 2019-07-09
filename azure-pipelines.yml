@@ -52,7 +52,7 @@ steps:
   displayName: 'Report'
   inputs:
     targetType: 'inline'
-    script: for i in $(cat sha.txt); do python xup.py --access-key "f64f98a110bba8998a549a149c3e4db855fed2488ac0ff30065370ff381b00c2" --secret-key "cbfa9fc50d04389300ea61c6c740815fe54176889d00fcb84ea6401049b532a5" --consec-path registry.cloud.tenable.com  report $i > report.txt; done 
+    script: for i in $(cat sha.txt); do python xup.py --access-key "cfbfe793ab677e4ede74369ddf312d1f7d84ad94e2db94129feef8a73c9eef15" --secret-key "e521382c5ed082eccf64278787d10c18eb3a34e6451f3d20dd2e27f921e9f402" --consec-path registry.cloud.tenable.com  report $i > report.txt; done 
 
 - task: Bash@3
   displayName: 'Report'
