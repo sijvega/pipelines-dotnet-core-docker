@@ -6,13 +6,8 @@
 trigger:
 - master
 
-- task: SonarQubePrepare@4
-  inputs:
-    SonarQube: 'Sonarqube'
-    scannerMode: 'MSBuild'
-    projectKey: 'bd1708aec44c7ccbc5b25f7acbda1af9e1fc2398'
-    projectName: 'test'
-    
+
+
 pool:
   vmImage: 'ubuntu-latest'
 
@@ -42,6 +37,14 @@ steps:
 - script: python -m pip install Docker
 - script: python -m pip install requests
 - script: python -m pip install colorama
+
+- task: SonarQubePrepare@4
+  inputs:
+    SonarQube: 'Sonarqube'
+    scannerMode: 'MSBuild'
+    projectKey: 'bd1708aec44c7ccbc5b25f7acbda1af9e1fc2398'
+    projectName: 'csharpvsts'
+
 
 - task: SonarQubeAnalyze@4
   displayName: 'Análisis de código'
