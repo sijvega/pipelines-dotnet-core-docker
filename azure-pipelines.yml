@@ -36,6 +36,9 @@ steps:
 - script: python -m pip install requests
 - script: python -m pip install colorama
 
+- task: SonarQubeAnalyze@4
+  displayName: 'Análisis de código'
+
 - task: Bash@3
   displayName: 'csup Install'
   inputs:
