@@ -46,8 +46,7 @@ steps:
     projectName: 'csharpvsts'
 
 
-- task: SonarQubeAnalyze@4
-  displayName: 'Análisis de código'
+
 
 - task: Bash@3
   displayName: 'csup Install'
@@ -79,6 +78,10 @@ steps:
     targetType: 'inline'
     script: cat report.txt | grep Id | awk '{print $4}' > id.txt
 
+- task: SonarQubeAnalyze@4
+  displayName: 'Análisis de código'
+
+  
 - task: Bash@3
   displayName: 'Get Result'
   inputs:
