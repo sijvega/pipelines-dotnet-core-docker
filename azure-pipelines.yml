@@ -9,7 +9,7 @@ trigger:
 
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-2019'
 
 variables:
   buildConfiguration: 'Release'
@@ -37,15 +37,6 @@ steps:
 - script: python -m pip install Docker
 - script: python -m pip install requests
 - script: python -m pip install colorama
-
-- task: SonarQubePrepare@4
-  inputs:
-    SonarQube: 'Sonarqube'
-    scannerMode: 'MSBuild'
-    projectKey: 'bd1708aec44c7ccbc5b25f7acbda1af9e1fc2398'
-    projectName: 'csharpvsts'
-
-
 
 
 - task: Bash@3
@@ -78,8 +69,7 @@ steps:
     targetType: 'inline'
     script: cat report.txt | grep Id | awk '{print $4}' > id.txt
 
-- task: SonarQubeAnalyze@4
-  displayName: 'Análisis de código'
+
 
   
 - task: Bash@3
